@@ -1,9 +1,10 @@
 package bb.he.example.h2noob.repository;
 
 import bb.he.example.h2noob.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,5 +20,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     List<User> findTop10ByFirstname(String firstname);
     List<User> findTop10ByFirstnameAndLastname(String firstname, String lastname);
     Optional<User>  findByUsernameOrEmail(String username, String Email);
-
+    List<User> findByRoleUserRole(String userRole);
+    Page<User> findAll(Pageable pageable);
 }
